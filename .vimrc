@@ -29,6 +29,12 @@ Bundle 'Shougo/vimproc'
 Bundle 'kien/ctrlp.vim'
 Bundle 'naquad/vim-picker'
 Bundle 'Shougo/neocomplete.vim'
+Bundle 'vim-scripts/Align'
+Bundle 'airblade/vim-gitgutter'
+" Required for php documenter
+Bundle 'tobyS/vmustache'
+Bundle 'tobyS/pdv'
+"Bundle 'vim-scripts/TabBar'
 
 filetype plugin indent on     " required!
 syntax on
@@ -95,7 +101,7 @@ set nofoldenable        "dont fold by defaulti
 let g:used_javascript_libs = 'jquery'
 
 " VIM Airline
-let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
 let g:airline_left_sep = '▶'
 let g:airline_right_sep = '◀'
 let g:airline_section_c = '%t'
@@ -166,6 +172,11 @@ set pastetoggle=<f5>
 
 " Force write of files using :w!! 
 cmap w!! w !sudo tee % >/dev/null
+
+" PHP documenter script bound to Control-P
+autocmd FileType php inoremap <F6> <ESC>:call PhpDocSingle()<CR>i
+autocmd FileType php nnoremap <F6> :call PhpDocSingle()<CR>
+autocmd FileType php vnoremap <F6> :call PhpDocRange()<CR> 
 
 "================
 "     Events
